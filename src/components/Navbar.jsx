@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
-import { useState } from "react";
-import { useEffect } from "react";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -41,18 +39,17 @@ const Navbar = () => {
           className="flex items-center gap-2"
           onClick={() => {
             setActive("");
-
             window.scrollTo(0, 0);
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex">
+          <p className="text-white text-[18px] font-bold cursor-pointer flex ">
             Hillary &nbsp;
-            <span className="sm:block hidden"> | Chikendu</span>
+            <span className="sm:block hidden"> | Fullstack Developer</span>
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-grow gap-10">
+        <ul className="list-none hidden sm:flex flex-row gap-10">
           {navLinks.map((nav) => (
             <li
               key={nav.id}
@@ -80,7 +77,7 @@ const Navbar = () => {
             } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
-              {navLinks.map((nav) => {
+              {navLinks.map((nav) => (
                 <li
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
@@ -92,8 +89,8 @@ const Navbar = () => {
                   }}
                 >
                   <a href={`#${nav.id}`}>{nav.title}</a>
-                </li>;
-              })}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
